@@ -1,0 +1,44 @@
+{
+  "name": "cx.google.youtube",
+  "version": "1.0.0",
+  "description": "google youtube api written in typescript",
+  "license": {
+    "type": "MIT",
+    "url": "https://raw.githubusercontent.com/EFEducationFirstMobile/oss/master/LICENSE"
+  },
+  "scripts": {
+    "tsc": "tsc -p src -w",
+    "start": "live-server --open=example"
+  },
+  "homepage": "https://github.com/ef-ctx/cx.google.youtube",
+  "bugs": "https://github.com/ef-ctx/cx.google.youtube/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ef-ctx/cx.google.youtube.git"
+  },
+  "keywords": [],
+  "author": "",
+  "typings": "./src/index.d.ts",
+  "dependencies": {},
+  "devDependencies": {
+    "es6-promise": "^3.0.2",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-json-editor": "^2.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-rimraf": "^0.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.10.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.19",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.3",
+    "live-server": "^0.8.2",
+    "merge2": "^1.0.1",
+    "phantomjs": "^2.1",
+    "systemjs": "0.19.2",
+    "systemjs-builder": "^0.15.0",
+    "typescript": "^1.7.5"
+  }
+}

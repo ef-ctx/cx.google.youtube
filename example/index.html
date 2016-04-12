@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>cx.google.youtube</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"  type="text/css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.1/angular-material.min.css" />
+	<link rel="stylesheet" href="app.css" />
+</head>
+<body youtube-example ng-cloak layout="row">
+	<div>
+		<md-input-container>
+	        <label>Search Youtube</label>
+	        <input ng-model="keywords" />
+      	</md-input-container>
+		<md-button class="md-raised md-primary" ng-click="ctrl.search(keywords)">Search</md-button>
+		<md-button class="md-raised md-primary" ng-click="ctrl.next()" ng-disabled="ctrl.query.isLastPage()">Next</md-button>
+		<md-button class="md-raised md-primary" ng-click="ctrl.previous()" ng-disabled="ctrl.query.isFirstPage()">Previous</md-button>
+
+		<md-content>
+			<md-list flex>
+				<md-list-item class="md-3-line" ng-repeat="item in searchResponse" ng-click="ctrl.openVideo(item)">
+					<img ng-src="{{item.thumbnails.default.url}}" class="md-avatar" alt="{{item.title}}" />
+					<div class="md-list-item-text" layout="column">
+						<h3>{{ item.title }}</h3>
+						<h4>{{ item.id.kind }}</h4>
+						<p>{{ item.description }}</p>
+					</div>
+				</md-list-item>
+			</md-list>
+		</md-content>
+	</div>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.16/system.js"></script>
+  	<script src="../node_modules/cx.google.core/bundles/cx.google.core.js"></script>
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+	<script src="system.config.js"></script>
+	<!-- <script src="../dist/bundles/cx.google.drive.js"></script> -->
+	<script>
+	Promise.all([
+      System.import('example')
+    ])
+	.then(function (modules) {
+        var app = modules[0].default;
+
+		angular.element(document).ready(function() {
+		    angular.bootstrap(document, [app.name]);
+		});
+	});
+	</script>
+</body>
+</html>
