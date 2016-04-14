@@ -2,7 +2,6 @@
   "name": "cx.google.drive",
   "version": false,
   "ambientDependencies": {
-    "cx.google.core": "npm:cx.google.core",
     "es6-promise": "github:DefinitelyTyped/DefinitelyTyped/es6-promise/es6-promise.d.ts#ba257a9b91bc0de1bdd9091b6723194c905a902a",
     "isomorphic-fetch": "registry:dt/isomorphic-fetch#0.0.0+20160316155526",
     "jasmine": "github:DefinitelyTyped/DefinitelyTyped/jasmine/jasmine.d.ts#ba257a9b91bc0de1bdd9091b6723194c905a902a"
