@@ -21,6 +21,30 @@ export function main() {
             expect(window['fetch']).toHaveBeenCalledWith(query.baseUrl);
         });
 
+        it('should set a limit to GoogleApiQuery and call fetch with maxResults', function () {
+            spyOn(window, 'fetch').and.callFake(function () {
+                return Promise.resolve();
+            });
+
+            var query = new GoogleApiQuery(new GoogleApiRequest());
+            query.limit(42);
+            query.execute();
+
+            expect(window['fetch']).toHaveBeenCalledWith(query.baseUrl + '?maxResults=42');
+        });
+
+        it('should set a param to a value of a GoogleApiQuery and call fetch with that param', function () {
+            spyOn(window, 'fetch').and.callFake(function () {
+                return Promise.resolve();
+            });
+
+            var query = new GoogleApiQuery(new GoogleApiRequest());
+            query.equal('hello', 'earth');
+            query.execute();
+
+            expect(window['fetch']).toHaveBeenCalledWith(query.baseUrl + '?hello=earth');
+        });
+
         it('should return a instance of GoogleApiResponse', function (done) {
             spyOn(window, 'fetch').and.callFake(function () {
                 return Promise.resolve({

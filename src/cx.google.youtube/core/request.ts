@@ -12,8 +12,8 @@ export class GoogleApiRequest {
                     values;
 
                 if (Array.isArray(param)) {
-                    values = query.params[a].join(',');
-                } else if (values !== undefined && values !== null) {
+                    values = param.join(',');
+                } else if (param !== undefined && param !== null) {
                     values = param;
                 }
 
