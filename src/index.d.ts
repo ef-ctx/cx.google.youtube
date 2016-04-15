@@ -104,9 +104,8 @@ declare module 'cx.google.youtube/youtube/id' {
     }
     export class YouTubeId implements IYouTubeId {
         kind: YouTubeKind;
-        channelId: string;
-        videoId: string;
-        constructor(data: IYouTubeId);
+        id: string;
+        constructor(data: string | IYouTubeId);
     }
 
 }
@@ -118,7 +117,7 @@ declare module 'cx.google.youtube/youtube/list' {
     export class YouTubeVideoListQuery extends YouTubeApiQuery {
         baseUrl: string;
         constructor(request?: GoogleApiRequest);
-        id(id: YouTubeId): YouTubeVideoListQuery;
+        id(ids: YouTubeId | YouTubeId[]): YouTubeVideoListQuery;
         post_get_hook(response: any): IYouTubeApiResponse;
     }
 
