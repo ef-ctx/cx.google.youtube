@@ -27,12 +27,16 @@ export class GoogleApiQuery {
         this.params = {};
     }
 
-    equal(key: string, value: any) {
+    equal(key: string, value: string | number | (string|number)[]) {
         if (!this.params.hasOwnProperty(key)) {
             this.params[key] = [];
         }
 
-        this.params[key].push(value);
+        if (Array.isArray(value)) {
+            this.params[key] = this.params[key].concat(value);
+        } else {
+            this.params[key].push(value);
+        }
 
         return this;
     }

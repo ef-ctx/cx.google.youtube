@@ -17,6 +17,18 @@ export class MissingRequiredFieldError extends Error {
     }
 }
 
+export class InvalidFieldValueError extends Error {
+    constructor(public field: string, value: any) {
+        super(field);
+        this.name = 'InvalidFieldValueError';
+        this.message = value + ' is not a valid value for ' + field;
+        this.stack = (<any>new Error()).stack;
+    }
+    toString() {
+        return this.name + ': ' + this.message;
+    }
+}
+
 export class JsonBodyParseError extends Error {
     constructor(public message: string) {
         super(message);

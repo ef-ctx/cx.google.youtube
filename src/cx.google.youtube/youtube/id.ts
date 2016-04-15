@@ -1,19 +1,18 @@
 export type YouTubeKind = 'youtube#channel' | 'youtube#video';
 
 export interface IYouTubeId {
-    kind: string;
+    kind?: string;
     channelId?: string;
     videoId?: string;
 }
 
 export class YouTubeId implements IYouTubeId {
     kind: YouTubeKind;
-    channelId: string;
-    videoId: string;
+    id: string;
 
-    constructor(data: IYouTubeId) {
-        this.kind = <YouTubeKind>data.kind;
-        this.channelId = data.channelId;
-        this.videoId = data.videoId;
+    constructor(data: string | IYouTubeId) {
+        var idData = typeof data === 'string' ? <IYouTubeId>{'kind': 'youtube#video', 'videoId': data} : data;
+        this.kind = <YouTubeKind>idData.kind;
+        this.id = this.kind === 'youtube#channel' ? idData.channelId : idData.videoId;
     }
 }

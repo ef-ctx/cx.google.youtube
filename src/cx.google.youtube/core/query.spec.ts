@@ -45,6 +45,22 @@ export function main() {
             expect(() => query.execute()).not.toThrow(new MissingRequiredFieldError('part'));
         });
 
+        it('should set params when using equal', function () {
+            var query = new MyCustomQuery(new MockApiRequest());
+
+            query.equal('galaxy', 42);
+
+            expect(query.params).toEqual({'galaxy': [42]});
+
+            query.equal('galaxy', 'life');
+
+            expect(query.params).toEqual({'galaxy': [42, 'life']});
+
+            query.equal('galaxy', ['hitchhiker', 'guide']);
+
+            expect(query.params).toEqual({'galaxy': [42, 'life', 'hitchhiker', 'guide']});
+        });
+
         it('should set isFirstPage when previousPageToken is set to null', function (done) {
             var query = new GoogleApiQuery(new MockApiRequest());
 

@@ -50,6 +50,8 @@ class YouTubeExampleCtrl {
         var query = new YouTubeVideoListQuery(new GoogleApiRequest());
 
         query.id(video.id)
+            .equal('part', 'snippet')
+            .equal('part', 'player')
             .key('AIzaSyAC4J1cgsfkRJCmHJJAxgP3En0b3EvxYYM');
 
         query.execute().then((response) => {
