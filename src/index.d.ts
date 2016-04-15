@@ -95,6 +95,31 @@ declare module 'cx.google.youtube/youtube/channel' {
 
 }
 
+declare module 'cx.google.youtube/youtube/contentDetails' {
+    interface IRegionRestriction {
+        allowed: string[];
+        blocked: string[];
+    }
+    export interface IYouTubeContentDetails {
+        caption?: string;
+        definition?: string;
+        dimension?: string;
+        duration?: string;
+        licensedContent?: string;
+        regionRestriction?: IRegionRestriction;
+    }
+    export class YouTubeContentDetails {
+        caption: string;
+        definition: string;
+        dimension: string;
+        duration: string;
+        licensedContent: string;
+        regionRestriction: IRegionRestriction;
+        constructor(data: IYouTubeContentDetails);
+    }
+
+}
+
 declare module 'cx.google.youtube/youtube/id' {
     export type YouTubeKind = 'youtube#channel' | 'youtube#video';
     export interface IYouTubeId {
@@ -195,6 +220,7 @@ declare module 'cx.google.youtube/youtube/video' {
     import { IYouTubeId, YouTubeId } from 'cx.google.youtube/youtube/id';
     import { YouTubeThumbnailTypes, IYouTubeThumbnailTypes } from 'cx.google.youtube/youtube/thumbnail';
     import { YouTubePlayer, IYouTubePlayer } from 'cx.google.youtube/youtube/player';
+    import {YouTubeContentDetails, IYouTubeContentDetails} from 'cx.google.youtube/youtube/contentDetails';
     export interface IVideoSnippetResponseObject {
         channelId: string;
         channelTitle: string;
@@ -208,13 +234,15 @@ declare module 'cx.google.youtube/youtube/video' {
         kind: string;
         etag: string;
         id: IYouTubeId;
+        contentDetails?: IYouTubeContentDetails;
         player?: IYouTubePlayer;
-        snippet: IVideoSnippetResponseObject;
+        snippet?: IVideoSnippetResponseObject;
     }
     export class YouTubeVideo {
         id: YouTubeId;
         channelId: string;
         channelTitle: string;
+        contentDetails: YouTubeContentDetails;
         description: string;
         liveBroadcastContent: string;
         player: YouTubePlayer;
