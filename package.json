@@ -1,6 +1,6 @@
 {
   "name": "cx.google.youtube",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "google youtube api written in typescript",
   "license": {
     "type": "MIT",
